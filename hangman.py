@@ -40,6 +40,7 @@ def hangman(word):
         print("\n".join(stages[0: wrong]))
         print("You lose! It was {}.".format(word))
 
-words = ["cat", "dog", "bird", "fish", "elephant"]
-word = random.choice(words)
-hangman(word)
+def startGame():
+    words = ["cat", "dog", "bird", "fish", "elephant"]
+    word = random.choice(words)
+    hangman(word)

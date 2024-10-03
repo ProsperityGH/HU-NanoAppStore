@@ -7,14 +7,19 @@ print("| $$\  $$$| $$  | $$| $$\  $$$| $$  | $$      | $$  | $$| $$      | $$   
 print("| $$ \  $$| $$  | $$| $$ \  $$|  $$$$$$/      | $$  | $$| $$      | $$      |  $$$$$$/   | $$  |  $$$$$$/| $$  | $$| $$$$$$$$      |  $$$$$$/| $$      | $$$$$$$/| $$  | $$| $$  | $$|  $$$$$$/| $$  | $$   | $$   ")
 print("|__/  \__/|__/  |__/|__/  \__/ \______/       |__/  |__/|__/      |__/       \______/    |__/   \______/ |__/  |__/|________/       \______/ |__/      |_______/ |__/  |__/|__/  |__/ \______/ |__/  |__/   |__/   ")
 
-randomNumber = open("randomNumber.py", "r+")
-hangman = open("hangman.py", "r+")
+import randomNumber as rNumb
+import hangman as hM
 
 def randomNumber():
+    print("1: Random Number Generator")
+    print("2: Hangman")
 
+    keuze = int(input("GEEF OP WELKE OPTIE JE WILT KIEZEN!"))
 
-    # match keuze:
-    #     case 1:
-    #         aantal_kluizen_vrij()
-    #     case 2:
-    #         nieuwe_kluis()
+    match keuze:
+        case 1:
+            rNumb.startGame()
+        case 2:
+            hM.startGame()
+
+randomNumber()
