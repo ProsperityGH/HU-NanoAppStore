@@ -1,46 +1,49 @@
 import random
 
-def hangman(word):
-    wrong = 0
-    stages = ["",
-                "__________       ",
-                "|        |      ",
-                "|        |      ",
-                "|        0      ",
-                "|       /|\     ",
-                "|       / \     ",
-                "|               "
-                ]
-    rletters = list(word)
-    board = ["__"] * len(word)
-    win = False
-    print("Welcome to Hangman")
+def hangman(woord):
+    fouten = 0
+    hangendeMan = ["",          # De hangende man die wordt geprint
+              "__________       ",
+              "|        |      ",
+              "|        |      ",
+              "|        0      ",
+              "|       /|\     ",
+              "|       / \     ",
+              "|               "
+              ]
+    rletters = list(woord)
+    bord = ["__"] * len(woord) # _ _ in het spel betekent een leeg vak
+    gewonnen = False
 
-    while wrong < len(stages) - 1:
+    print("Welkom bij Galgje")
+
+    while fouten < len(hangendeMan) - 1:
         print("\n")
-        msg = "Guess a letter: "
-        char = input(msg)
-        if char in rletters:
-            cind = rletters.index(char)
-            board[cind] = char
+        bericht = "Raad een letter: "
+        letter = input(bericht)
+
+        if letter in rletters:
+            cind = rletters.index(letter)
+            bord[cind] = letter
             rletters[cind] = '$'
         else:
-            wrong += 1
+            fouten += 1
 
-        print((" ".join(board)))
-        e = wrong + 1
-        print("\n".join(stages[0: e]))
+        print((" ".join(bord)))
+        e = fouten + 1 
+        print("\n".join(hangendeMan[0: e]))
         
-        if "__" not in board:
-            print("You win!")
-            print(" ".join(board))
-            win = True
+        if "__" not in bord: #Als het woord volledig is beschreven stopt het spel en wint de speler
+            print("Je wint!")
+            print(" ".join(bord))
+            gewonnen = True
             break
-    if not win:
-        print("\n".join(stages[0: wrong]))
-        print("You lose! It was {}.".format(word))
+
+    if not gewonnen:
+        print("\n".join(hangendeMan[0: fouten])) # Toon de volledige hangman
+        print("Je verliest! Het woord was {}.".format(woord))
 
 def startGame():
-    words = ["cat", "dog", "bird", "fish", "elephant"]
-    word = random.choice(words)
-    hangman(word)
+    woorden = ["kat", "hond", "vogel", "vis", "olifant"] # Woorden die willekeurig worden gebruikt in het spel
+    woord = random.choice(woorden)
+    hangman(woord)
