@@ -22,7 +22,7 @@ def hangman(woord):
         bericht = "Raad een letter: "
         letter = input(bericht)
 
-        if letter in rletters:
+        if letter in rletters: # Controleert of de geraden letter in het lijstje 'rletters' (de resterende letters van het te raden woord) staat.
             cind = rletters.index(letter)
             bord[cind] = letter
             rletters[cind] = '$'
